@@ -381,5 +381,14 @@ namespace InsSandServerRunner
             }
             
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://mod.io/g/insurgencysandstorm/r/server-admin-guide",
+                UseShellExecute = true
+            });
+        }
     }
 }
