@@ -35,6 +35,23 @@ namespace InsSandServerRunner
             {"Buhriz", "Buhriz?Scenario=Scenario_Tideway_Checkpoint_Security"}
         };
 
+        Dictionary<string, string> checkpointHardcoreScenariosMapping = new Dictionary<string, string>
+        {
+            {"Canyon", "Canyon?Scenario=Scenario_Crossing_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Bab", "Bab?Scenario=Scenario_Bab_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Farmhouse", "Farmhouse?Scenario=Scenario_Farmhouse_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Town", "Town?Scenario=Scenario_Hideout_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Sinjar", "Sinjar?Scenario=Scenario_Hillside_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Ministry", "Ministry?Scenario=Scenario_Ministry_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Compound", "Compound?Scenario=Scenario_Outskirts_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Precinct", "Precinct?Scenario=Scenario_Precinct_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Oilfield", "Oilfield?Scenario=Scenario_Refinery_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Mountain", "Mountain?Scenario=Scenario_Summit_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"PowerPlant", "PowerPlant?Scenario=Scenario_PowerPlant_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Tell", "Tell?Scenario=Scenario_Tell_Checkpoint_Security?Game=CheckpointHardcore"},
+            {"Buhriz", "Buhriz?Scenario=Scenario_Tideway_Checkpoint_Security?Game=CheckpointHardcore"}
+        };
+
         public Form1()
         {
             InitializeComponent();
@@ -440,15 +457,25 @@ namespace InsSandServerRunner
 
         private void CheckpointScenarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CheckpointScenarios.SelectedItem != null)
+            if (sender == CheckpointScenarios && CheckpointScenarios.SelectedItem != null)
             {
                 string selectedMap = CheckpointScenarios.SelectedItem.ToString();
                 if (checkpointScenariosMapping.ContainsKey(selectedMap))
                 {
                     mapCommand.Text = checkpointScenariosMapping[selectedMap];
-                    Console.WriteLine($"Selected map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
+                    Console.WriteLine($"Selected checkpoint map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
+                }
+            }
+            else if (sender == CheckpointHardcoreScenarios && CheckpointHardcoreScenarios.SelectedItem != null)
+            {
+                string selectedMap = CheckpointHardcoreScenarios.SelectedItem.ToString();
+                if (checkpointHardcoreScenariosMapping.ContainsKey(selectedMap))
+                {
+                    mapCommand.Text = checkpointHardcoreScenariosMapping[selectedMap];
+                    Console.WriteLine($"Selected checkpoint hardcore map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
                 }
             }
         }
+
     }
 }
