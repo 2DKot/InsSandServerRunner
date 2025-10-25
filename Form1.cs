@@ -354,10 +354,19 @@ namespace InsSandServerRunner
                 {
                     Console.WriteLine($"Starting Insurgency Sandstorm Server: {serverExe}");
                     
+                    // Get values from text fields and concatenate them
+                    var mapCommand = this.mapCommand.Text?.Trim() ?? "";
+                    var serverArgs = this.serverArgs.Text?.Trim() ?? "";
+                    var fullArguments = $"{mapCommand} {serverArgs}".Trim();
+                    
+                    Console.WriteLine($"Map command: {mapCommand}");
+                    Console.WriteLine($"Server args: {serverArgs}");
+                    Console.WriteLine($"Full arguments: {fullArguments}");
+                    
                     var psi = new System.Diagnostics.ProcessStartInfo
                     {
                         FileName = serverExe,
-                        Arguments = "Canyon?Scenario=Scenario_Crossing_Checkpoint_Security?MaxPlayers=4 -Port=27102 -QueryPort=27131 -GameStats -AdminList=Admins -log -noeac -hostname=ChillGame",
+                        Arguments = fullArguments,
                         WorkingDirectory = Path.GetDirectoryName(serverExe),
                         UseShellExecute = false,
                         CreateNoWindow = false
