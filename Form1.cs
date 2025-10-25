@@ -60,6 +60,22 @@ namespace InsSandServerRunner
             {"Tell", "Tell?Scenario=Scenario_Tell_FFA"}
         };
 
+        Dictionary<string, string> survivalScenariosMapping = new Dictionary<string, string>
+        {
+            {"Bab", "Bab?Scenario=Scenario_Bab_Survival"},
+            {"Farmhouse", "Farmhouse?Scenario=Scenario_Farmhouse_Survival"},
+            {"Town", "Town?Scenario=Scenario_Hideout_Survival"},
+            {"Sinjar", "Sinjar?Scenario=Scenario_Hillside_Survival"},
+            {"Ministry", "Ministry?Scenario=Scenario_Ministry_Survival"},
+            {"Compound", "Compound?Scenario=Scenario_Outskirts_Survival"},
+            {"Precinct", "Precinct?Scenario=Scenario_Precinct_Survival"},
+            {"Oilfield", "Oilfield?Scenario=Scenario_Refinery_Survival"},
+            {"Mountain", "Mountain?Scenario=Scenario_Summit_Survival"},
+            {"PowerPlant", "PowerPlant?Scenario=Scenario_PowerPlant_Survival"},
+            {"Tell", "Tell?Scenario=Scenario_Tell_Survival"},
+            {"Buhriz", "Buhriz?Scenario=Scenario_Tideway_Survival"},
+        };
+
         public Form1()
         {
             InitializeComponent();
@@ -490,6 +506,15 @@ namespace InsSandServerRunner
                 {
                     mapCommand.Text = ffaScenariosMapping[selectedMap];
                     Console.WriteLine($"Selected FFA map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
+                }
+            }
+            else if (sender == SurvivalScenarios && SurvivalScenarios.SelectedItem != null)
+            {
+                string selectedMap = SurvivalScenarios.SelectedItem.ToString();
+                if (survivalScenariosMapping.ContainsKey(selectedMap))
+                {
+                    mapCommand.Text = survivalScenariosMapping[selectedMap];
+                    Console.WriteLine($"Selected Survival map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
                 }
             }
         }

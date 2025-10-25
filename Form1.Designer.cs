@@ -41,6 +41,8 @@
             this.CheckpointHardcoreScenarios = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.FfaScenarios = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SurvivalScenarios = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -199,11 +201,45 @@
             this.FfaScenarios.TabIndex = 11;
             this.FfaScenarios.SelectedIndexChanged += new System.EventHandler(this.CheckpointScenarios_SelectedIndexChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(408, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 16);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Survival";
+            // 
+            // SurvivalScenarios
+            // 
+            this.SurvivalScenarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SurvivalScenarios.FormattingEnabled = true;
+            this.SurvivalScenarios.Items.AddRange(new object[] {
+            "Bab",
+            "Farmhouse",
+            "Town",
+            "Sinjar",
+            "Ministry",
+            "Compound",
+            "Precinct",
+            "Oilfield",
+            "Mountain",
+            "PowerPlant",
+            "Tell",
+            "Buhriz"});
+            this.SurvivalScenarios.Location = new System.Drawing.Point(411, 76);
+            this.SurvivalScenarios.Name = "SurvivalScenarios";
+            this.SurvivalScenarios.Size = new System.Drawing.Size(121, 24);
+            this.SurvivalScenarios.TabIndex = 13;
+            this.SurvivalScenarios.SelectedIndexChanged += new System.EventHandler(this.CheckpointScenarios_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 504);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.SurvivalScenarios);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.FfaScenarios);
             this.Controls.Add(this.label4);
@@ -239,6 +275,8 @@
         private System.Windows.Forms.ComboBox CheckpointHardcoreScenarios;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox FfaScenarios;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox SurvivalScenarios;
     }
 }
 
