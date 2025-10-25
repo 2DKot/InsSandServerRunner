@@ -17,6 +17,24 @@ namespace InsSandServerRunner
 {
     public partial class Form1 : Form
     {
+
+        Dictionary<string, string> checkpointScenariosMapping = new Dictionary<string, string>
+        {
+            {"Canyon", "Canyon?Scenario=Scenario_Crossing_Checkpoint_Security"},
+            {"Bab", "Bab?Scenario=Scenario_Bab_Checkpoint_Security"},
+            {"Farmhouse", "Farmhouse?Scenario=Scenario_Farmhouse_Checkpoint_Security"},
+            {"Town", "Town?Scenario=Scenario_Hideout_Checkpoint_Security"},
+            {"Sinjar", "Sinjar?Scenario=Scenario_Hillside_Checkpoint_Security"},
+            {"Ministry", "Ministry?Scenario=Scenario_Ministry_Checkpoint_Security"},
+            {"Compound", "Compound?Scenario=Scenario_Outskirts_Checkpoint_Security"},
+            {"Precinct", "Precinct?Scenario=Scenario_Precinct_Checkpoint_Security"},
+            {"Oilfield", "Oilfield?Scenario=Scenario_Refinery_Checkpoint_Security"},
+            {"Mountain", "Mountain?Scenario=Scenario_Summit_Checkpoint_Security"},
+            {"PowerPlant", "PowerPlant?Scenario=Scenario_PowerPlant_Checkpoint_Security"},
+            {"Tell", "Tell?Scenario=Scenario_Tell_Checkpoint_Security"},
+            {"Buhriz", "Buhriz?Scenario=Scenario_Tideway_Checkpoint_Security"}
+        };
+
         public Form1()
         {
             InitializeComponent();
@@ -372,7 +390,6 @@ namespace InsSandServerRunner
                         CreateNoWindow = false
                     };
                     System.Diagnostics.Process.Start(psi);
-                    MessageBox.Show("Insurgency Sandstorm Server started!");
                 }
                 else
                 {
@@ -389,6 +406,49 @@ namespace InsSandServerRunner
                 FileName = "https://mod.io/g/insurgencysandstorm/r/server-admin-guide",
                 UseShellExecute = true
             });
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Find Steam and get library folders
+            string exe = FindSteamFromRegistry();
+            if (exe == null)
+            {
+                MessageBox.Show("Could not find steam.exe via registry.");
+                return;
+            }
+
+            var steamDir = Path.GetDirectoryName(exe);
+            var libraryFolders = GetSteamLibraryFolders(steamDir);
+
+            // Find Insurgency Sandstorm Dedicated Server
+            var serverExe = FindInsurgencySandstormServer(libraryFolders);
+            if (serverExe != null)
+            {
+                var serverDir = Path.GetDirectoryName(serverExe);
+                var configDir = Path.Combine(serverDir, "Insurgency", "Saved", "Config", "WindowsServer");
+                Console.WriteLine($"Opening server config folder: {configDir}");
+                
+                // Open the server config folder in Windows Explorer
+                System.Diagnostics.Process.Start("explorer.exe", configDir);
+            }
+            else
+            {
+                MessageBox.Show("Could not find Insurgency Sandstorm Dedicated Server. Please install it via Steam first.");
+            }
+        }
+
+        private void CheckpointScenarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CheckpointScenarios.SelectedItem != null)
+            {
+                string selectedMap = CheckpointScenarios.SelectedItem.ToString();
+                if (checkpointScenariosMapping.ContainsKey(selectedMap))
+                {
+                    mapCommand.Text = checkpointScenariosMapping[selectedMap];
+                    Console.WriteLine($"Selected map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
+                }
+            }
         }
     }
 }
