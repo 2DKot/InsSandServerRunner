@@ -39,6 +39,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CheckpointHardcoreScenarios = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.FfaScenarios = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -173,11 +175,37 @@
             this.CheckpointHardcoreScenarios.TabIndex = 9;
             this.CheckpointHardcoreScenarios.SelectedIndexChanged += new System.EventHandler(this.CheckpointScenarios_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(281, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "FFA (Deathmatch)";
+            // 
+            // FfaScenarios
+            // 
+            this.FfaScenarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FfaScenarios.FormattingEnabled = true;
+            this.FfaScenarios.Items.AddRange(new object[] {
+            "Canyon",
+            "Precinct",
+            "PowerPlant",
+            "Tell"});
+            this.FfaScenarios.Location = new System.Drawing.Point(284, 76);
+            this.FfaScenarios.Name = "FfaScenarios";
+            this.FfaScenarios.Size = new System.Drawing.Size(121, 24);
+            this.FfaScenarios.TabIndex = 11;
+            this.FfaScenarios.SelectedIndexChanged += new System.EventHandler(this.CheckpointScenarios_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 504);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.FfaScenarios);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CheckpointHardcoreScenarios);
             this.Controls.Add(this.label3);
@@ -209,6 +237,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox CheckpointHardcoreScenarios;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox FfaScenarios;
     }
 }
 

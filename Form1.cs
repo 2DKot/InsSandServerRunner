@@ -52,6 +52,14 @@ namespace InsSandServerRunner
             {"Buhriz", "Buhriz?Scenario=Scenario_Tideway_Checkpoint_Security?Game=CheckpointHardcore"}
         };
 
+        Dictionary<string, string> ffaScenariosMapping = new Dictionary<string, string>
+        {
+            {"Canyon", "Canyon?Scenario=Scenario_Crossing_FFA"},
+            {"Precinct", "Precinct?Scenario=Scenario_Precinct_FFA"},
+            {"PowerPlant", "PowerPlant?Scenario=Scenario_PowerPlant_FFA"},
+            {"Tell", "Tell?Scenario=Scenario_Tell_FFA"}
+        };
+
         public Form1()
         {
             InitializeComponent();
@@ -473,6 +481,15 @@ namespace InsSandServerRunner
                 {
                     mapCommand.Text = checkpointHardcoreScenariosMapping[selectedMap];
                     Console.WriteLine($"Selected checkpoint hardcore map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
+                }
+            }
+            else if (sender == FfaScenarios && FfaScenarios.SelectedItem != null)
+            {
+                string selectedMap = FfaScenarios.SelectedItem.ToString();
+                if (ffaScenariosMapping.ContainsKey(selectedMap))
+                {
+                    mapCommand.Text = ffaScenariosMapping[selectedMap];
+                    Console.WriteLine($"Selected FFA map: {selectedMap}, Set mapCommand to: {mapCommand.Text}");
                 }
             }
         }
